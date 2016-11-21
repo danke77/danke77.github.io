@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://danke77.github.io/2016/10/19/react-native-embedding-ios/</loc>
+    
+    <lastmod>2016-11-21T12:48:00.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://danke77.github.io/2016/10/17/react-native-embedding-android/</loc>
     
     <lastmod>2016-11-17T11:07:42.000Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://danke77.github.io/2016/10/25/understanding-flux/</loc>
     
     <lastmod>2016-10-25T05:27:24.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://danke77.github.io/2016/10/19/react-native-embedding-ios/</loc>
-    
-    <lastmod>2016-10-19T12:12:33.000Z</lastmod>
     
   </url>
   

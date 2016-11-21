@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>https://danke77.github.io/2016/10/19/react-native-embedding-ios/</loc>
+    <lastmod>2016-11-21T12:48:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>原生 iOS 项目集成 React Native</title>
+        <pubTime>2016-10-19T11:58:32.000Z</pubTime>
+        
+        <tag>React Native</tag>
+         
+        <tag>iOS</tag>
+         
+         
+           
+             
+              <breadCrumb title="React Native" url="https://danke77.github.io/categories/React-Native/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://danke77.github.io/2016/10/17/react-native-embedding-android/</loc>
     <lastmod>2016-11-17T11:07:42.000Z</lastmod>
     <data>
@@ -41,28 +63,6 @@
            
              
               <breadCrumb title="React" url="https://danke77.github.io/categories/React/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://danke77.github.io/2016/10/19/react-native-embedding-ios/</loc>
-    <lastmod>2016-10-19T12:12:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>原生 iOS 项目集成 React Native</title>
-        <pubTime>2016-10-19T11:58:32.000Z</pubTime>
-        
-        <tag>React Native</tag>
-         
-        <tag>iOS</tag>
-         
-         
-           
-             
-              <breadCrumb title="React Native" url="https://danke77.github.io/categories/React-Native/"/>
           
         </display>
     </data>
