@@ -4,16 +4,16 @@
 
     
   <url>
-    <loc>https://danke77.github.io/2016/10/19/react-native-embedding-ios/</loc>
-    <lastmod>2016-11-22T01:45:53.000Z</lastmod>
+    <loc>https://danke77.github.io/2016/10/17/react-native-embedding-android/</loc>
+    <lastmod>2016-11-22T05:00:37.000Z</lastmod>
     <data>
         <display>
-        <title>原生 iOS 项目集成 React Native</title>
-        <pubTime>2016-10-19T11:58:32.000Z</pubTime>
+        <title>原生 Android 项目集成 React Native</title>
+        <pubTime>2016-10-17T04:34:20.000Z</pubTime>
         
         <tag>React Native</tag>
          
-        <tag>iOS</tag>
+        <tag>Android</tag>
          
          
            
@@ -26,16 +26,16 @@
 
     
   <url>
-    <loc>https://danke77.github.io/2016/10/17/react-native-embedding-android/</loc>
-    <lastmod>2016-11-22T01:45:41.000Z</lastmod>
+    <loc>https://danke77.github.io/2016/10/19/react-native-embedding-ios/</loc>
+    <lastmod>2016-11-22T01:45:53.000Z</lastmod>
     <data>
         <display>
-        <title>原生 Android 项目集成 React Native</title>
-        <pubTime>2016-10-17T04:34:20.000Z</pubTime>
+        <title>原生 iOS 项目集成 React Native</title>
+        <pubTime>2016-10-19T11:58:32.000Z</pubTime>
         
         <tag>React Native</tag>
          
-        <tag>Android</tag>
+        <tag>iOS</tag>
          
          
            
