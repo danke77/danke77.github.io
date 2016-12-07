@@ -1,0 +1,260 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>React Native 原生模块和 JS 模块交互（Android） | 慌不要慌</title>
+  <meta name="author" content="慌不要慌">
+  
+  <meta name="description" content="慌不要慌的个人博客 | 慌不要慌&#39;s blog">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="React Native 原生模块和 JS 模块交互（Android）"/>
+  <meta property="og:site_name" content="慌不要慌"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="慌不要慌" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu sitemap -->
+  <meta name="baidu-site-verification" content="j0WhOpjCbB" />
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">慌不要慌</a></h1>
+  <h2><a href="/">不迁怒，不贰过。</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+      <li><a href="/atom.xml">Rss</a></li>
+    
+      <!-- <li><a href="https://github.com/danke77">Github</a></li> -->
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-12-07T12:03:47.000Z"><a href="/2016/12/07/react-native-native-modules-android/">2016年12月07日</a></time>
+      
+      
+  
+    <h1 class="title">React Native 原生模块和 JS 模块交互（Android）</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h1 id="1-JS-&#x6A21;&#x5757;&#x8C03;&#x7528;&#x539F;&#x751F;&#x6A21;&#x5757;&#x65B9;&#x6CD5;"><a href="#1-JS-&#x6A21;&#x5757;&#x8C03;&#x7528;&#x539F;&#x751F;&#x6A21;&#x5757;&#x65B9;&#x6CD5;" class="headerlink" title="1. JS &#x6A21;&#x5757;&#x8C03;&#x7528;&#x539F;&#x751F;&#x6A21;&#x5757;&#x65B9;&#x6CD5;"></a>1. JS &#x6A21;&#x5757;&#x8C03;&#x7528;&#x539F;&#x751F;&#x6A21;&#x5757;&#x65B9;&#x6CD5;</h1><h3 id="1-1-ReactContextBaseJavaModule"><a href="#1-1-ReactContextBaseJavaModule" class="headerlink" title="1.1 ReactContextBaseJavaModule"></a>1.1 ReactContextBaseJavaModule</h3><p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x539F;&#x751F;&#x6A21;&#x5757; <code>ZanIntentModule</code> &#x5E76;&#x7EE7;&#x627F;&#x62BD;&#x8C61;&#x7C7B; <code>ReactContextBaseJavaModule</code>&#xFF0C;&#x540C;&#x65F6;&#x5B9E;&#x73B0;&#x51E0;&#x4E2A;&#x65B9;&#x6CD5;&#x3002;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ZanIntentModule</span> <span class="keyword">extends</span> <span class="title">ReactContextBaseJavaModule</span> </span>{</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ZanIntentModule</span><span class="params">(ReactApplicationContext reactContext)</span> </span>{</div><div class="line">        <span class="keyword">super</span>(reactContext);</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>{</div><div class="line">        <span class="keyword">return</span> <span class="string">&quot;ZanIntentModule&quot;</span>;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getConstants</span><span class="params">()</span> </span>{</div><div class="line">        <span class="keyword">final</span> Map&lt;String, Object&gt; constants = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        <span class="keyword">return</span> constants;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * js call native to start activity</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> toActivityName</div><div class="line">     * <span class="doctag">@param</span> map</div><div class="line">     */</div><div class="line">    <span class="meta">@ReactMethod</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startActivity</span><span class="params">(String toActivityName, ReadableMap map)</span> </span>{</div><div class="line">        <span class="keyword">try</span> {</div><div class="line">            Activity currentActivity = getCurrentActivity();</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (currentActivity != <span class="keyword">null</span>) {</div><div class="line">                Class toActivity = Class.forName(toActivityName);</div><div class="line">                Intent intent = getActivityIntent(currentActivity, toActivity, map);</div><div class="line">                currentActivity.startActivity(intent);</div><div class="line">            }</div><div class="line">        } <span class="keyword">catch</span> (Exception e) {</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> JSApplicationIllegalArgumentException(</div><div class="line">                    <span class="string">&quot;Could not open Activity : &quot;</span> + e.getMessage());</div><div class="line">        }</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<h4 id="getName"><a href="#getName" class="headerlink" title="getName()"></a><strong>getName()</strong></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>{</div><div class="line">    <span class="keyword">return</span> <span class="string">&quot;ZanIntentModule&quot;</span>;</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7528;&#x4E8E;<strong>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x540D;&#x5B57;&#xFF0C;&#x8FD9;&#x4E2A;&#x540D;&#x5B57;&#x5728; JavaScript &#x7AEF;&#x6807;&#x8BB0;&#x8FD9;&#x4E2A;&#x6A21;&#x5757;</strong>&#x3002;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x628A;&#x8FD9;&#x4E2A;&#x6A21;&#x5757;&#x547D;&#x540D;&#x4E3A; <code>ZanIntentModule</code>&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x5728; JavaScript &#x4E2D;&#x901A;&#x8FC7; <code>NativeModules.ZanIntentModule</code> &#x8BBF;&#x95EE;&#x5230;&#x8FD9;&#x4E2A;&#x6A21;&#x5757;&#x3002;</p>
+<h4 id="getConstants"><a href="#getConstants" class="headerlink" title="getConstants()"></a><strong>getConstants()</strong></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getConstants</span><span class="params">()</span> </span>{</div><div class="line">    <span class="keyword">final</span> Map&lt;String, Object&gt; constants = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">    <span class="keyword">return</span> constants;</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x5982;&#x679C;&#x9700;&#x8981;&#x5728; Java &#x548C; JavaScript &#x4E4B;&#x95F4;&#x5B9A;&#x4E49;&#x5E38;&#x91CF;&#xFF0C;&#x5219;&#x8981;&#x8986;&#x76D6;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x8FD4;&#x56DE;&#x9700;&#x8981;&#x5BFC;&#x51FA;&#x7ED9; JavaScript &#x4F7F;&#x7528;&#x7684;&#x5E38;&#x91CF;&#x3002;</p>
+<h4 id="ReactMethod"><a href="#ReactMethod" class="headerlink" title="@ReactMethod"></a><strong>@ReactMethod</strong></h4><p><strong>&#x8981;&#x5BFC;&#x51FA;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x7ED9; JavaScript &#x4F7F;&#x7528;&#xFF0C;Java &#x65B9;&#x6CD5;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x6CE8;&#x89E3; <code>@ReactMethod</code>&#xFF0C;&#x65B9;&#x6CD5;&#x7684;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;&#x5FC5;&#x987B;&#x4E3A; <code>void</code>&#x3002;React Native &#x7684;&#x8DE8;&#x8BED;&#x8A00;&#x8BBF;&#x95EE;&#x662F;&#x5F02;&#x6B65;&#x8FDB;&#x884C;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x60F3;&#x8981;&#x7ED9; JavaScript &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x503C;&#x7684;&#x552F;&#x4E00;&#x529E;&#x6CD5;&#x662F;&#x4F7F;&#x7528;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x6216;&#x8005;&#x53D1;&#x9001;&#x4E8B;&#x4EF6;&#x3002;</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@ReactMethod</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startActivity</span><span class="params">(String toActivityName, ReadableMap map)</span> </span>{</div><div class="line">    <span class="keyword">try</span> {</div><div class="line">        Activity currentActivity = getCurrentActivity();</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (currentActivity != <span class="keyword">null</span>) {</div><div class="line">            Class toActivity = Class.forName(toActivityName);</div><div class="line">            Intent intent = getActivityIntent(currentActivity, toActivity, map);</div><div class="line">            currentActivity.startActivity(intent);</div><div class="line">        }</div><div class="line">    } <span class="keyword">catch</span> (Exception e) {</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> JSApplicationIllegalArgumentException(</div><div class="line">                <span class="string">&quot;Could not open Activity : &quot;</span> + e.getMessage());</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x5728; JavaScript &#x4E2D;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x8C03;&#x7528;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">NativeModules.ZanIntentModule.startActivity(</div><div class="line">    <span class="string">&apos;com.danke77.sample.activity.WebViewActivity&apos;</span>,</div><div class="line">    {</div><div class="line">      <span class="string">&apos;url&apos;</span>: url</div><div class="line">    })</div></pre></td></tr></table></figure>
+<h3 id="1-2-&#x6CE8;&#x518C;&#x6A21;&#x5757;"><a href="#1-2-&#x6CE8;&#x518C;&#x6A21;&#x5757;" class="headerlink" title="1.2 &#x6CE8;&#x518C;&#x6A21;&#x5757;"></a>1.2 &#x6CE8;&#x518C;&#x6A21;&#x5757;</h3><p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A; Package &#x7C7B; <code>ZanReactPackage</code> &#x5E76;&#x5B9E;&#x73B0; <code>ReactPackage</code>&#xFF0C;&#x5728; <code>createNativeModules</code> &#x65B9;&#x6CD5;&#x4E2D;&#x6DFB;&#x52A0;&#x8FD9;&#x4E2A;&#x6A21;&#x5757;&#x3002;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ZanReactPackage</span> <span class="keyword">implements</span> <span class="title">ReactPackage</span> </span>{</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;NativeModule&gt; <span class="title">createNativeModules</span><span class="params">(ReactApplicationContext reactContext)</span> </span>{</div><div class="line">        List&lt;NativeModule&gt; modules = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        modules.add(<span class="keyword">new</span> ZanIntentModule(reactContext));</div><div class="line">        <span class="keyword">return</span> modules;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="keyword">public</span> List&lt;Class&lt;? extends JavaScriptModule&gt;&gt; createJSModules() {</div><div class="line">        <span class="keyword">return</span> Collections.emptyList();</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;ViewManager&gt; <span class="title">createViewManagers</span><span class="params">(ReactApplicationContext reactContext)</span> </span>{</div><div class="line">        <span class="keyword">return</span> Collections.emptyList();</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<h3 id="1-3-&#x6DFB;&#x52A0;&#x6A21;&#x5757;"><a href="#1-3-&#x6DFB;&#x52A0;&#x6A21;&#x5757;" class="headerlink" title="1.3 &#x6DFB;&#x52A0;&#x6A21;&#x5757;"></a>1.3 &#x6DFB;&#x52A0;&#x6A21;&#x5757;</h3><p>&#x5728; <code>Application</code> &#x4E2D;&#x7684; <code>ReactNativeHost</code> &#x5B9E;&#x4F8B;&#x91CC; <code>getPackages</code> &#x65B9;&#x6CD5;&#x6DFB;&#x52A0; <code>ZanReactPackage</code> &#x5B9E;&#x4F8B;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> List&lt;ReactPackage&gt; <span class="title">getPackages</span><span class="params">()</span> </span>{</div><div class="line">    <span class="keyword">return</span> Arrays.&lt;ReactPackage&gt;asList(</div><div class="line">        <span class="keyword">new</span> MainReactPackage(),</div><div class="line">        <span class="keyword">new</span> ZanReactPackage()</div><div class="line">    );</div><div class="line">}</div></pre></td></tr></table></figure>
+<h3 id="1-4-&#x56DE;&#x8C03;&#x51FD;&#x6570;"><a href="#1-4-&#x56DE;&#x8C03;&#x51FD;&#x6570;" class="headerlink" title="1.4 &#x56DE;&#x8C03;&#x51FD;&#x6570;"></a>1.4 &#x56DE;&#x8C03;&#x51FD;&#x6570;</h3><h4 id="Callback"><a href="#Callback" class="headerlink" title="Callback"></a><strong>Callback</strong></h4><p>Callback &#x662F; <code>com.facebook.react.bridge</code> &#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x4F5C;&#x4E3A; ReactMethod &#x7684;&#x4E00;&#x4E2A;&#x4F20;&#x53C2;&#xFF0C;&#x7528;&#x6765;&#x6620;&#x5C04; JavaScript &#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF08;function&#xFF09;&#x3002;</p>
+<p>Callback &#x63A5;&#x53E3;&#x53EA;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5; invoke&#xFF0C;invoke &#x63A5;&#x53D7;&#x591A;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x5FC5;&#x987B;&#x662F; <code>com.facebook.react.bridge</code> &#x4E2D;&#x652F;&#x6301;&#x7684;&#x53C2;&#x6570;&#x3002;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@ReactMethod</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">login</span><span class="params">(String name, String password, Callback success, Callback failure)</span> </span>{</div><div class="line">    <span class="keyword">try</span> {</div><div class="line">        <span class="keyword">if</span> (TextUtils.isEmpty(name)) {</div><div class="line">            failure.invoke(<span class="string">&quot;name is empty&quot;</span>);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        }</div><div class="line">        <span class="keyword">if</span> (TextUtils.isEmpty(password)) {</div><div class="line">            failure.invoke(<span class="string">&quot;password is empty&quot;</span>);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        }</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (<span class="keyword">new</span> LoginTask().login(name, password)) {</div><div class="line">            success.invoke(name);</div><div class="line">        } <span class="keyword">else</span> {</div><div class="line">            failure.invoke(<span class="string">&quot;login failure&quot;</span>);</div><div class="line">        }</div><div class="line">    } <span class="keyword">catch</span> (Exception e) {</div><div class="line">        e.printStackTrace();</div><div class="line">        failure.invoke(e.getMessage());</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x5728; JavaScript &#x4E2D;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x8C03;&#x7528;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">NativeModules.LoginModule.login(<span class="string">&apos;name&apos;</span>, <span class="string">&apos;password&apos;</span>, (name) =&gt; {</div><div class="line">	alert(name)</div><div class="line">}, (err) =&gt; {</div><div class="line">	alert(err)</div><div class="line">})</div></pre></td></tr></table></figure>
+<h4 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a><strong>Promise</strong></h4><p>Promise &#x662F; ES6 &#x4E2D;&#x589E;&#x52A0;&#x7684;&#x5BF9;&#x4E8E;&#x5F02;&#x6B65;&#x7F16;&#x7A0B;&#x548C;&#x56DE;&#x8C03;&#x66F4;&#x52A0;&#x53CB;&#x597D;&#x7684; API&#x3002;</p>
+<p>&#x5728; <code>com.facebook.react.bridge</code> &#x4E2D;&#x5B9A;&#x4E49;&#x7684; Promise &#x63A5;&#x53E3;&#xFF0C;&#x5B9E;&#x73B0;&#x4E86; <code>resolve</code> &#x548C; <code>reject</code> &#x65B9;&#x6CD5;&#xFF0C;<code>resolve</code> &#x7528;&#x6765;&#x5904;&#x7406;&#x6B63;&#x786E;&#x7ED3;&#x679C;&#xFF0C;<code>reject</code> &#x7528;&#x6765;&#x5904;&#x7406;&#x5F02;&#x5E38;&#x3002;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@ReactMethod</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">login</span><span class="params">(String name, String password, Promise promise)</span> </span>{</div><div class="line">    <span class="keyword">try</span> {</div><div class="line">        <span class="keyword">if</span> (TextUtils.isEmpty(name)) {</div><div class="line">            promise.reject(<span class="string">&quot;-1&quot;</span>, <span class="string">&quot;name is empty&quot;</span>);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        }</div><div class="line">        <span class="keyword">if</span> (TextUtils.isEmpty(password)) {</div><div class="line">            promise.reject(<span class="string">&quot;-2&quot;</span>, <span class="string">&quot;password is empty&quot;</span>);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        }</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (<span class="keyword">new</span> LoginTask().login(name, password)) {</div><div class="line">            WritableMap map = Arguments.createMap();</div><div class="line">            map.putString(<span class="string">&quot;name&quot;</span>, name);</div><div class="line">            promise.resolve(map);</div><div class="line">        } <span class="keyword">else</span> {</div><div class="line">            promise.reject(<span class="string">&quot;-3&quot;</span>, <span class="string">&quot;login failure&quot;</span>);</div><div class="line">        }</div><div class="line">    } <span class="keyword">catch</span> (Exception e) {</div><div class="line">        e.printStackTrace();</div><div class="line">        promise.reject(e);</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x5728; JavaScript &#x4E2D;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x8C03;&#x7528;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">NativeModules.LoginModule.login(<span class="string">&apos;name&apos;</span>, <span class="string">&apos;password&apos;</span>)</div><div class="line">	.then(</div><div class="line">		(map) =&gt; {</div><div class="line">			alert(map.name)</div><div class="line">		}</div><div class="line">	)</div><div class="line">	.catch(</div><div class="line">		(code, err) =&gt; {</div><div class="line">			alert(err)</div><div class="line">		}</div><div class="line">	)</div></pre></td></tr></table></figure>
+<p>&#x6216;&#x8005;&#x7528; async/await &#x6765;&#x4FEE;&#x9970;&#xFF0C;&#x4EE5;&#x540C;&#x6B65;&#x65B9;&#x5F0F;&#x8C03;&#x7528;&#x539F;&#x751F;&#x6A21;&#x5757;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">async</span> login() {</div><div class="line">	<span class="keyword">try</span> {</div><div class="line">		<span class="keyword">var</span> {</div><div class="line">			name</div><div class="line">		} = <span class="keyword">await</span> NativeModules.LoginModule.login(<span class="string">&apos;name&apos;</span>, <span class="string">&apos;password&apos;</span>)</div><div class="line">		alert(name)</div><div class="line">	}</div><div class="line">	<span class="keyword">catch</span> (code, err) {</div><div class="line">		alert(err)</div><div class="line">	}</div><div class="line">}</div></pre></td></tr></table></figure>
+<blockquote>
+<p>&#x5728;&#x539F;&#x751F;&#x6A21;&#x5757;&#x4E2D; Promise &#x7C7B;&#x578B;&#x7684;&#x53C2;&#x6570;&#x5FC5;&#x987B;&#x8981;&#x653E;&#x5728;&#x6700;&#x540E;&#x4E00;&#x4F4D;&#xFF0C;&#x8FD9;&#x6837; JavaScript &#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019;&#x624D;&#x80FD;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; Promise&#x3002;</p>
+</blockquote>
+<h1 id="2-&#x539F;&#x751F;&#x6A21;&#x5757;&#x53D1;&#x9001;&#x4E8B;&#x4EF6;&#x5230;-JS-&#x6A21;&#x5757;"><a href="#2-&#x539F;&#x751F;&#x6A21;&#x5757;&#x53D1;&#x9001;&#x4E8B;&#x4EF6;&#x5230;-JS-&#x6A21;&#x5757;" class="headerlink" title="2. &#x539F;&#x751F;&#x6A21;&#x5757;&#x53D1;&#x9001;&#x4E8B;&#x4EF6;&#x5230; JS &#x6A21;&#x5757;"></a>2. &#x539F;&#x751F;&#x6A21;&#x5757;&#x53D1;&#x9001;&#x4E8B;&#x4EF6;&#x5230; JS &#x6A21;&#x5757;</h1><p>&#x539F;&#x751F;&#x6A21;&#x5757;&#x53EF;&#x4EE5;&#x5728;&#x6CA1;&#x6709;&#x88AB;&#x8C03;&#x7528;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x5F80; JavaScript &#x53D1;&#x9001;&#x4E8B;&#x4EF6;&#x901A;&#x77E5;&#x3002;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">sendEvent</span><span class="params">(ReactContext reactContext,</span></span></div><div class="line">                         String eventName,</div><div class="line">                         @Nullable WritableMap params) {</div><div class="line">    reactContext</div><div class="line">            .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)</div><div class="line">            .emit(eventName, params);</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x53D1;&#x9001;&#x4E8B;&#x4EF6;&#x65F6;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">WritableMap params = Arguments.createMap();</div><div class="line">params.putInt(<span class="string">&quot;unread&quot;</span>, unreadCount);</div><div class="line">sendEvent(getReactApplicationContext(), <span class="string">&quot;onRefreshMessage&quot;</span>, params);</div></pre></td></tr></table></figure>
+<p>&#x5411; JavaScript &#x6A21;&#x5757;&#x53D1;&#x9001;&#x4E86;&#x4E00;&#x4E2A;&#x540D;&#x4E3A; <code>onRefreshMessage</code> &#x7684;&#x4E8B;&#x4EF6;&#xFF0C;&#x5E76;&#x643A;&#x5E26;&#x4E86; <code>params</code> &#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x3002;</p>
+<p>JavaScript &#x6A21;&#x5757;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4F7F;&#x7528; <code>DeviceEventEmitter</code> &#x6A21;&#x5757;&#x6765;&#x76D1;&#x542C;&#x4E8B;&#x4EF6;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">componentDidMount() {</div><div class="line">    DeviceEventEmitter.addListener(<span class="string">&apos;onRefreshMessage&apos;</span>, <span class="keyword">this</span>.onUpdateMessage)</div><div class="line">}</div><div class="line"></div><div class="line">componentWillUnmount() {</div><div class="line">    DeviceEventEmitter.removeListener(<span class="string">&apos;onRefreshMessage&apos;</span>, <span class="keyword">this</span>.onUpdateMessage)</div><div class="line">}</div><div class="line"></div><div class="line">onUpdateMessage = (e) =&gt; {</div><div class="line">	alert(e.unread)</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x672C;&#x6587;&#x662F; <a href="https://github.com/danke77" target="_blank" rel="external">&#x614C;&#x4E0D;&#x8981;&#x614C;</a> &#x539F;&#x521B;&#xFF0C;&#x53D1;&#x8868;&#x4E8E; <a href="https://danke77.github.io/">https://danke77.github.io/</a>&#xFF0C;&#x8BF7;&#x9605;&#x8BFB;&#x539F;&#x6587;&#x652F;&#x6301;&#x539F;&#x521B; <a href="https://danke77.github.io/2016/12/7/react-native-native-modules-android/">https://danke77.github.io/2016/12/7/react-native-native-modules-android/</a>&#xFF0C;&#x7248;&#x6743;&#x5F52;&#x4F5C;&#x8005;&#x6240;&#x6709;&#xFF0C;&#x8F6C;&#x8F7D;&#x8BF7;&#x6CE8;&#x660E;&#x51FA;&#x5904;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x89C9;&#x5F97;&#x6211;&#x7684;&#x6587;&#x7AE0;&#x5BF9;&#x60A8;&#x6709;&#x7528;&#xFF0C;&#x8BF7;&#x968F;&#x610F;&#x6253;&#x8D4F;&#x3002;&#x60A8;&#x7684;&#x652F;&#x6301;&#x5C06;&#x9F13;&#x52B1;&#x6211;&#x7EE7;&#x7EED;&#x521B;&#x4F5C;&#xFF01;</p>
+<div style="text-align: center"><br><img src="https://github.com/danke77/danke77.github.io/blob/master/images/weixin_pay_qrcode.png?raw=true"><br></div>
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/React-Native/">React Native</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/React-Native/">React Native</a>, <a href="/tags/Android/">Android</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:danke77.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Android/">Android</a><small>1</small></li>
+  
+    <li><a href="/categories/React/">React</a><small>1</small></li>
+  
+    <li><a href="/categories/React-Native/">React Native</a><small>4</small></li>
+  
+    <li><a href="/categories/hexo/">hexo</a><small>1</small></li>
+  
+    <li><a href="/categories/node/">node</a><small>1</small></li>
+  
+    <li><a href="/categories/随笔/">随笔</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/React-Native/" style="font-size: 20px;">React Native</a> <a href="/tags/Retrofit/" style="font-size: 10px;">Retrofit</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2016/12/07/react-native-native-modules-android/">React Native 原生模块和 JS 模块交互（Android）</a>
+      </li>
+    
+      <li>
+        <a href="/2016/11/23/react-native-inside-fragment/">在 Fragment 中使用 React Native</a>
+      </li>
+    
+      <li>
+        <a href="/2016/10/25/understanding-flux/">理解 Flux</a>
+      </li>
+    
+      <li>
+        <a href="/2016/10/19/react-native-embedding-ios/">原生 iOS 项目集成 React Native</a>
+      </li>
+    
+      <li>
+        <a href="/2016/10/17/react-native-embedding-android/">原生 Android 项目集成 React Native</a>
+      </li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<div class="alignleft">
+  
+  &copy; 2016 慌不要慌
+  
+
+   | Theme by  <a href="https://github.com/hexojs/hexo-theme-light">Light</a>
+
+  <br>
+  <span id="busuanzi_container_site_pv" style='display:none'>
+      本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+  </span>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
